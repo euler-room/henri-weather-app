@@ -1,0 +1,25 @@
+<div class="container text-center">
+  <p id="notice"><%= notice %></p>
+  <h1><%= "#{@location.city}, #{@location.state} #{@location.zip}" %></h1>
+  <div id="refreshable">
+    <img src="<%= @weather_data[:icon_url] %>" alt="<%= @weather_data[:weather] %>" >
+    <h2><%= @weather_data[:weather] %></h2>
+    <hr/><br/>
+    <div id="temps">
+      <h3><%= "Current temp: #{@weather_data[:temp]}" %></h3>
+      <h3><%= "High temp: #{@weather_data[:temp_max]}" %></h3>
+      <h3><%= "Low temp: #{@weather_data[:temp_min]}" %></h3>
+      <h3><%= "Avg temp: #{(@weather_data[:temp_min] + @weather_data[:temp_max]) / 2}" %></h3>
+    </div>
+  </div>
+
+  <br/><hr/><br/>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to 'Refresh', locations_path, :class => "btn btn-secondary btn-lg active"  %>
+
+    <%= button_to "Refresh", "#{@location.id}/refresh", remote: true %>
+    <%= link_to 'Locations', locations_path, :class => "btn btn-secondary btn-lg active"  %>
+    <%= button_to 'Cº <=> Fº', "#{@location.id}/toggle_temp_units", :class => "btn btn-secondary btn-lg active", remote: true   %>
+  </div>
+</div>
