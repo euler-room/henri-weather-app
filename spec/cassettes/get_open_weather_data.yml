@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.openweathermap.org/data/2.5/weather?APPID=bb347c33f5fa174e2cede0416148b209&units=imperial&zip=90210,us
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Wed, 07 Aug 2019 23:08:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '530'
+      Connection:
+      - keep-alive
+      X-Cache-Key:
+      - "/data/2.5/weather?APPID=bb347c33f5fa174e2cede0416148b209&units=imperial&zip=90210,us"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":-118.41,"lat":34.09},"weather":[{"id":211,"main":"Thunderstorm","description":"thunderstorm","icon":"11d"},{"id":721,"main":"Haze","description":"haze","icon":"50d"}],"base":"stations","main":{"temp":80.22,"pressure":1014,"humidity":48,"temp_min":66.99,"temp_max":91.99},"visibility":16093,"wind":{"speed":4.7,"deg":120},"clouds":{"all":40},"dt":1565218660,"sys":{"type":1,"id":6237,"message":0.013,"country":"US","sunrise":1565183351,"sunset":1565232582},"timezone":-25200,"id":0,"name":"Beverly
+        Hills","cod":200}'
+    http_version: 
+  recorded_at: Wed, 07 Aug 2019 23:08:42 GMT
+recorded_with: VCR 4.0.0

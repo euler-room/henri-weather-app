@@ -74,16 +74,17 @@ class OpenWeatherService < ServiceBase
     res.symbolize_keys
   end
 
-  private def daylight?(sr, ss)
-    (Time.at(sr)..Time.at(ss)).include? Time.now
+  def daylight?(sr, ss, now = nil)
+    now = Time.now unless now
+    (Time.at(sr)..Time.at(ss)).include? now
   end
 
-  private def get_icon_url(icon_key, is_daylight)
+  def get_icon_url(icon_key, is_daylight)
     icon_code = "#{WEATHER_CODE_MAP[icon_key.to_s.to_sym]}#{is_daylight ? 'd' : 'n'}"
     "http://openweathermap.org/img/wn/#{icon_code}@2x.png"
   end
 
-  private def open_weather_url(units)
+  def open_weather_url(units)
     "#{OPEN_WEATHER_BASE_URL}&zip=#{@location.zip},us&units=#{units}"
   end
 end

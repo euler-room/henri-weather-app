@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.zipcodeapi.com/rest/ieOFxfAsOPYYCtT5t0Zb32w9lmOZWA9MDuvooZwNZZiSgjB4h6veucVFnpnOJjm8/info.json/90210/degrees
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Aug 2019 23:24:36 GMT
+      Server:
+      - Apache/2.4.39 (Amazon) OpenSSL/1.0.2k-fips PHP/7.1.29
+      X-Powered-By:
+      - PHP/7.1.29
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '203'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"zip_code":"90210","lat":34.100501,"lng":-118.414908,"city":"Beverly
+        Hills","state":"CA","timezone":{"timezone_identifier":"America\/Los_Angeles","timezone_abbr":"PDT","utc_offset_sec":-25200,"is_dst":"T"},"acceptable_city_names":[]}'
+    http_version: 
+  recorded_at: Wed, 07 Aug 2019 23:24:36 GMT
+recorded_with: VCR 4.0.0

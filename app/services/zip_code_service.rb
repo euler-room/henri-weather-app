@@ -14,7 +14,7 @@ class ZipCodeService < ServiceBase
                   .slice(:city, :state, :zip_code)
   end
 
-  private def zip_api_url
+  def zip_api_url
     URI.parse("#{ZIP_API_BASE_URL}#{zip}/degrees")
   end
 end
