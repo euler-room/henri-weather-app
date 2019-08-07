@@ -1,0 +1,1 @@
+$("#temps").replaceWith("<div id='temps'><%= escape_javascript(render(partial: 'temps', locals: { weather_data: @weather_data, location: @location }))%></div>")

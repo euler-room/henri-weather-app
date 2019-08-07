@@ -1,0 +1,6 @@
+<img src="<%= weather_data[:icon_url] %>" alt="<%= weather_data[:weather] %>" >
+<h2><%= weather_data[:weather] %></h2>
+<hr/><br/>
+<div id="temps">
+  <%= render "temps", weather_data: weather_data, location: location %>
+</div>

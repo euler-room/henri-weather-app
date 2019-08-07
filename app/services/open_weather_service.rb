@@ -1,6 +1,6 @@
 class OpenWeatherService < ServiceBase
   OPEN_WEATHER_KEY = Rails.application.secrets.open_weather_key
-  DEFAULT_UNITS = 'metric'
+  DEFAULT_UNITS = 'imperial'
   OPEN_WEATHER_BASE_URL = "http://api.openweathermap.org/data/2.5/weather?APPID=#{OPEN_WEATHER_KEY}"
   WEATHER_CODE_MAP = {
     "200": "11",
@@ -63,12 +63,14 @@ class OpenWeatherService < ServiceBase
     @location = location
   end
 
-  def perform(units = DEFAULT_UNITS)
+  def perform(units)
     res = HTTParty.get(open_weather_url(units)).parsed_response
     is_daylight = daylight?(res["sys"]["sunrise"], res["sys"]["sunset"])
     icon_url = get_icon_url(res["weather"][0]["id"], is_daylight)
     res = res["main"].merge({ "weather": res["weather"][0]["main"],
-                              "icon_url": icon_url })
+                              "icon_url": icon_url,
+                              "units": units })
+
     res.symbolize_keys
   end
 

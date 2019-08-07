@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
-    @weather_data = OpenWeatherService.new(@location).perform
+    @weather_data = OpenWeatherService.new(@location).perform('imperial')
   end
 
   # GET /locations/new
@@ -70,8 +70,21 @@ class LocationsController < ApplicationController
   end
 
   def toggle_temp_units
-    @weather_data = OpenWeatherService.new(@location).perform(c_to_f_params[:units])
-    @weather_data.slice(:temp, :temp_max, :temp_min)
+    units = params["units"] == 'imperial' ? 'metric' : 'imperial'
+    @weather_data = OpenWeatherService.new(@location)
+                      .perform(units)
+                      .slice(:temp, :temp_max, :temp_min, :units)
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def refresh
+    @weather_data = OpenWeatherService.new(@location)
+                      .perform(params["units"])
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   private
