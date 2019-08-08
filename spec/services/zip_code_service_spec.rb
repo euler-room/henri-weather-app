@@ -9,7 +9,7 @@ RSpec.describe ZipCodeService, type: :service do
       expect(subject.perform).to eq({:city=>"Beverly Hills", :state=>"CA", :zip_code=>"90210"})
     end
   end
-  it "should proper zip api url" do
+  it "should return the proper zip api url" do
     expect(subject.zip_api_url.to_s).to eq(api_url)
   end
 end
